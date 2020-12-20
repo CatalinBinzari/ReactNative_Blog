@@ -1,13 +1,49 @@
-import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import React, { useContext } from 'react'
+import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native'
+import { Context as BlogContext } from '../context/BlogContext'
+import { Feather } from '@expo/vector-icons'
 
-const IndexScreen = () => {
-    return(
-    <View>
-        <Text>Index scren</Text>
-    </View>);
+const IndexScreen = ({navigation}) => {
+    const { state, addBlogPost, deleteBlogPost } = useContext(BlogContext); //value will be equal with everithing we assign to BlogContext in BlogContext.js 
+    return (
+        <View>
+
+            <Button title="Add post" onPress={addBlogPost} />
+            <FlatList
+                data={state}
+                keyExtractor={blogPost => blogPost.title} // function called with every object inside our array
+                renderItem={({ item }) => { //item is an individual blogpost object
+                    return (
+                        <TouchableOpacity onPress={ () => navigation.navigate('Show', { id: item.id })}>
+                        <View style={styles.row}>
+                            <Text style={styles.title}>{item.title} - {item.id}</Text>
+                            <TouchableOpacity onPress={ () => deleteBlogPost(item.id)}>
+                            <Feather name="trash" style={styles.icon}/>
+                            </TouchableOpacity>
+                        </View>
+                        </TouchableOpacity>
+                    );
+                }}
+            />
+        </View>
+    );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 20,
+        paddingHorizontal: 30,
+        borderBottomWidth: 1,
+        borderColor: 'gray',
+    },
+    title: {
+        fontSize: 18
+    },
+    icon: {
+        fontSize: 24
+    }
+})
 
 export default IndexScreen
