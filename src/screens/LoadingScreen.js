@@ -1,10 +1,11 @@
+//prima incarcare a aplicaitei
 import React, { useContext } from 'react'
-import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native'
+import { View, TextInputFocusEventData } from 'react-native'
 
 const IndexScreen = ({ navigation }) => {
   return (
     <View>
-      <Text>Index1</Text>
+      <Text>Hello</Text>
     </View>
   );
 }

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native'
 
-const IndexScreen = ({ navigation }) => {
+const MarksScreen = ({ navigation }) => {
   return (
     <View>
-      <Text>Index1</Text>
+      <Text>Marks</Text>
     </View>
   );
 }
 
-export default IndexScreen;
+export default MarksScreens;

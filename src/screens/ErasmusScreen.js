@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native'
 
-const IndexScreen = ({ navigation }) => {
+const ErasmusScreen = ({ navigation }) => {
   return (
     <View>
-      <Text>Index1</Text>
+      <Text>Erasmus</Text>
     </View>
   );
 }
 
-export default IndexScreen;
+export default ErasmusScreen;
